@@ -250,11 +250,11 @@ def add_per_capita_income_column(df_cad: pd.DataFrame):
     df_cad_modified = df_cad.copy()
 
     income_columns = ["VL_REMUNER_EMPREGO_MEMB", "VL_RENDA_BRUTA_12_MESES_MEMB",
-                     "VL_RENDA_DOACAO_MEMB", "VL_RENDA_APOSENT_MEMB",
-                     "VL_RENDA_SEGURO_DESEMP_MEMB",
-                     "VL_RENDA_PENSAO_ALIMEN_MEMB", "VL_RENDA_OUTRAS_MEMB"
-                     ]
-
+                         "VL_RENDA_DOACAO_MEMB", "VL_RENDA_APOSENT_MEMB",
+                         "VL_RENDA_SEGURO_DESEMP_MEMB",
+                         "VL_RENDA_PENSAO_ALIMEN_MEMB", "VL_RENDA_OUTRAS_MEMB"
+                         ]
+    
     # Convertendo os valores para valores numéricos:
     for income_column in income_columns:
         df_cad_modified[income_column] = pd.to_numeric(df_cad_modified[income_column], 
@@ -450,6 +450,58 @@ def get_proportion_of_pwd_by_age_and_group_and_pwd_percentage_in_extreme_poverty
             "percentagem_pcd_na_extrema_pobreza": pwd_percentage_in_extreme_poverty
             }
 
+def calculate_employment_rate_by_female_heads_with_young_children(df_cad: pd.DataFrame):
+    """
+        Função utilizada para calcular a taxa de ocupação (trabalho 
+        remunerado) entre mulheres responsáveis pelo domicílio que possuem
+        crianças de 0 a 6 anos na família, em comparação com aquelas que não
+        possuem crianças nessa faixa etária.
+    """
+
+    df_cad_modified = add_age_and_group_columns(df_cad)
+
+    # Convertendo os valores para valores numéricos:
+    df_cad_modified['CO_SEXO_PESSOA'] = pd.to_numeric(df_cad_modified['CO_SEXO_PESSOA'],
+                                                                       errors='coerce'
+                                                                       )
+    df_cad_modified['CO_PARENTESCO_RF_PESSOA'] = pd.to_numeric(df_cad_modified['CO_PARENTESCO_RF_PESSOA'],
+                                                                   errors='coerce'
+                                                                   )
+    df_cad_modified['VL_REMUNER_EMPREGO_MEMB'] = pd.to_numeric(df_cad_modified['VL_REMUNER_EMPREGO_MEMB'],
+                                                                       errors='coerce'
+                                                                       )
+    
+    # Adiciona uma coluna para identificar apenas as mulheres responsáveis pelo
+    # domicílio:
+    df_cad_modified['E_MULHER_RESPONSAVEL'] = (
+        (df_cad_modified['CO_SEXO_PESSOA'] == 2) &
+        (df_cad_modified['CO_PARENTESCO_RF_PESSOA'] == 1)
+        )
+
+    # Adiciona uma coluna para identificar apenas as crianças de 0 a 6 anos:
+    df_cad_modified['E_CRIANCA_0_A_6_ANOS'] = (
+        (df_cad_modified['IDADE'] >= 0) &
+        (df_cad_modified['IDADE'] <= 6)
+        )
+
+    # Agrupando por famíliar e verificando se há pelo menos alguma criança de 0
+    # a 6 anos:
+    has_young_children = df_cad_modified.groupby('CO_FAMILIAR_FAM')['E_CRIANCA_0_A_6_ANOS'].transform('any')
+    df_cad_modified['TEM_CRIANCA_0_A_6_ANOS'] = has_young_children
+
+    # Filtra apenas as mulheres responsáveis pelo domicílio:
+    df_cad_modified = df_cad_modified[df_cad_modified['E_MULHER_RESPONSAVEL'] == True]
+
+    # Adiciona uma coluna para identificar apenas as mulheres responsáveis que
+    # têm trabalho remunerado:
+    df_cad_modified['TEM_TRABALHO_REMUNERADO'] = df_cad_modified['VL_REMUNER_EMPREGO_MEMB'] > 0
+
+    # Calculando a taxa de ocupação (trabalho remunerado). As percentagens das
+    # faixas etárias serão as médias da coluna booleana TEM_TRABALHO_REMUNERADO:
+    employment_rates = df_cad_modified.groupby('TEM_CRIANCA_0_A_6_ANOS')['TEM_TRABALHO_REMUNERADO'].mean()
+    
+    return employment_rates
+
 def run():
     input_path = 'amostra.csv/*.csv'
     files = glob.glob(input_path)
@@ -466,7 +518,6 @@ def run():
         
     df_cad = pd.concat(dfs, ignore_index=True)
 
-    
     stats = calculate_age_distribution_by_sex_and_race(df_cad)
     print(stats)
 
@@ -491,10 +542,13 @@ def run():
 
     rates = calculate_informal_employment_percentage_rate_by_education_level(df_cad)
     print(rates)
-
+    
     stats = get_proportion_of_pwd_by_age_and_group_and_pwd_percentage_in_extreme_poverty(df_cad)
     print(stats["proporcao_pcd_por_faixa_etaria"])
     print(stats["percentagem_pcd_na_extrema_pobreza"])
+    
+    employment_rates = calculate_employment_rate_by_female_heads_with_young_children(df_cad)
+    print(employment_rates)
 
 if __name__ == '__main__':
     run()
