@@ -61,11 +61,11 @@ Em todas as categorias de cor/raça, os homens superam as mulheres em média e m
 
 | Cor/Raça | Média (Homens) | Média (Mulheres) | Diferença Média | Mediana (Homens) | Mediana (Mulheres) | Diferença Mediana |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1. Branca** | R$ 798,27 | R$ 630,06 | + R$ 168,21 | R$ 700,00 | R$ 450,00 | + R$ 250,00 |
-| **2. Preta** | R$ 602,08 | R$ 478,53 | + R$ 123,54 | R$ 400,00 | R$ 300,00 | + R$ 100,00 |
-| **3. Parda** | R$ 646,90 | R$ 533,13 | + R$ 113,77 | R$ 400,00 | R$ 320,00 | + R$ 80,00 |
-| **4. Amarela** | R$ 527,83 | R$ 447,60 | + R$ 80,23 | R$ 300,00 | R$ 280,00 | + R$ 20,00 |
-| **5. Indígena** | R$ 421,41 | R$ 347,99 | + R$ 73,43 | R$ 250,00 | R$ 200,00 | + R$ 50,00 |
+| **Branca** | R$ 798,27 | R$ 630,06 | + R$ 168,21 | R$ 700,00 | R$ 450,00 | + R$ 250,00 |
+| **Preta** | R$ 602,08 | R$ 478,53 | + R$ 123,54 | R$ 400,00 | R$ 300,00 | + R$ 100,00 |
+| **Parda** | R$ 646,90 | R$ 533,13 | + R$ 113,77 | R$ 400,00 | R$ 320,00 | + R$ 80,00 |
+| **Amarela** | R$ 527,83 | R$ 447,60 | + R$ 80,23 | R$ 300,00 | R$ 280,00 | + R$ 20,00 |
+| **Indígena** | R$ 421,41 | R$ 347,99 | + R$ 73,43 | R$ 250,00 | R$ 200,00 | + R$ 50,00 |
 
 ### 2. Relação entre Nível de Escolaridade e Trabalho Informal
 Qual é a taxa percentual de trabalhadores na condição de trabalho 
