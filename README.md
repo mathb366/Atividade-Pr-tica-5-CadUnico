@@ -98,6 +98,27 @@ etária?
 * **Mulheres responsáveis com crianças de 0 a 6 anos na família:** 37,20% de taxa de ocupação;
 * Os dados demonstram a necessidade de inserção no mercado de trabalho independentemente dos encargos de cuidado infantil.
 
+### 5.1 Pergunta 1: A proporção de PCDs em extrema pobreza é maior em municípios de baixo IDEB?
+
+Resposta. municípios com IDEB baixo tendem a apre-
+sentar percentual mais elevado de PCDs em extrema pobreza, em razão da pobreza ge-
+neralizada e da oferta insuficiente de serviços de reabilitação e educação inclusiva. A
+política pública decorrente é focalizar o BPC e a Rede de Cuidados à Pessoa com
+Deficiência nos municípios de IDEB baixo, onde a sobreposição de vulnerabilidades
+é mais intensa.
+
+![alt text](image.png)
+
+
+### 5.2 Pergunta 2: A taxa de ocupação de mulheres responsáveis por domicílio com crianças de 0 a 6 anos é maior em municípios de IDEB alto?
+
+Resposta. municípios com IDEB alto tendem a reduzir o custo de oportunidade do trabalho
+feminino por meio de creches, escolas em tempo integral e mercado formal mais denso. A
+política pública decorrente é priorizar a expansão de creches e programas de qua-
+lificação profis
+
+![alt text](image-1.png)
+
 ---
 
 ## 4. Como Executar o arquivo main.py
