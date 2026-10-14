@@ -2,7 +2,7 @@
 =================================================================================================================================================
     RELATÓRIO: Uma Análise Exploratória de Dados utilizando os microdados públicos da base Pessoa do Cadastro Único (CadÚnico) de 2018.
     PROCESSO SELETIVO: Programa de Trainee da consultoria socioeconômica DataBrasil Analytics
-    Candidatos: Arthur Vieira Silva
+    Candidatos: Arthur Vieira Silva e Matheus Barbosa Brandão
 =================================================================================================================================================
 
 1. Introdução:
@@ -92,9 +92,9 @@
         A taxa de ocupação (trabalho remunerado) entre mulheres responsáveis
         pelo domicílio que possuem crianças de 0 a 6 anos na família é de
         37,20%, valor muito próximo ao observado entre aquelas que não possuem 
-        crianças nessa faixa etária (36,30%), demonstrando a necessidade
-        imperativa de inserção no mercado de trabalho independentemente dos 
-        encargos de cuidado infantil na base analisada.
+        crianças nessa faixa etária (36,30%), demonstrando a necessidade de 
+        inserção no mercado de trabalho independentemente dos encargos de 
+        cuidado infantil.
 """
 
 import pandas as pd
