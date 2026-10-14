@@ -97,9 +97,10 @@ etária?
 
 ---
 
-## 4. Como Executar o Código
+## 4. Como Executar o arquivo main.py
 1. Instale o Python e as bibliotecas `pandas` e `numpy`;
-2. Adicione o arquivo CSV da amostra (`amostra.csv`) na raiz do diretório.
+2. Adicione o arquivo CSV da amostra (`amostra.csv`) na raiz do diretório;
+3. Execução do arquivo `main.py`:
 
    ```bash
    python main.py
