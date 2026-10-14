@@ -1,9 +1,31 @@
-""""
+"""
 =================================================================================================================================================
     RELATÓRIO: Uma Análise Exploratória de Dados utilizando os microdados públicos da base Pessoa do Cadastro Único (CadÚnico) de 2018.
     PROCESSO SELETIVO: Programa de Trainee da consultoria socioeconômica DataBrasil Analytics
     Candidatos: Arthur Vieira Silva e Matheus Barbosa Brandão
 =================================================================================================================================================
+"""
+"""
+5.1 Pergunta 1: A proporção de PCDs em extrema pobreza é
+maior em municípios de baixo IDEB?
+Resposta. municípios com IDEB baixo tendem a apre-
+sentar percentual mais elevado de PCDs em extrema pobreza, em razão da pobreza ge-
+neralizada e da oferta insuficiente de serviços de reabilitação e educação inclusiva. A
+política pública decorrente é focalizar o BPC e a Rede de Cuidados à Pessoa com
+Deficiência nos municípios de IDEB baixo, onde a sobreposição de vulnerabilidades
+é mais intensa.
+
+
+5.2 Pergunta 2: A taxa de ocupação de mulheres responsáveis por
+domicílio com crianças de 0 a 6 anos é maior em municípios
+de IDEB alto?
+Resposta. municípios com IDEB alto tendem a reduzir o custo de oportunidade do trabalho
+feminino por meio de creches, escolas em tempo integral e mercado formal mais denso. A
+política pública decorrente é priorizar a expansão de creches e programas de qua-
+lificação profis
+"""
+
+""""
 
 1. Introdução:
 
@@ -20,12 +42,7 @@
         (aproximadamente 21 anos para homens e 23,2 anos para mulheres), com 
         mediana de 16 e 20 anos, respectivamente. A população preta apresenta 
         as maiores médias de idade, alcançando 31,7 anos para o sexo masculino 
-        e 34,8 anos para o feminino. Sobre o desvio padrão, a população branca 
-        e a parda apresentam maior dispersão das idades entre os homens (22,1 
-        anos), enquanto, entre as mulheres, a população branca apresenta o maior 
-        valor (21,5 anos). A população indígena apresenta os menores desvios padrão, 
-        tanto para homens (17,2 anos) quanto para mulheres (16,9 anos), indicando 
-        menor variabilidade.
+        e 34,8 anos para o feminino;
 
         2. Entre os indivíduos em idade ativa (PIA - 18 a 65 anos), a taxa
         proporcional de trabalhadores formais (com carteira assinada) é de 
@@ -100,29 +117,7 @@
         crianças nessa faixa etária (36,30%), demonstrando a necessidade de 
         inserção no mercado de trabalho independentemente dos encargos de 
         cuidado infantil.
-
-3. Proposta de Enriquecimento de Dados (Cruzamento de Bases):
-
-    - Perguntas:
-        5.1 Pergunta 1: A proporção de PCDs em extrema pobreza é
-        maior em municípios de baixo IDEB?
-        Resposta. A direção esperada é positiva: municípios com IDEB baixo tendem a apre-
-        sentar percentual mais elevado de PCDs em extrema pobreza, em razão da pobreza ge-
-        neralizada e da oferta insuficiente de serviços de reabilitação e educação inclusiva. A
-        política pública decorrente é focalizar o BPC e a Rede de Cuidados à Pessoa com
-        Deficiência nos municípios de IDEB baixo, onde a sobreposição de vulnerabilidades
-        é mais intensa.
-                
-        5.2 Pergunta 2: A taxa de ocupação de mulheres responsáveis por
-        domicílio com crianças de 0 a 6 anos é maior em municípios
-        de IDEB alto?
-        Resposta. Espera-se uma correlação positiva entre IDEB e taxa de ocupação femi-
-        nina: municípios com IDEB alto tendem a reduzir o custo de oportunidade do trabalho
-        feminino por meio de creches, escolas em tempo integral e mercado formal mais denso. A
-        política pública decorrente é priorizar a expansão de creches e programas de qua-
-        lificação profissional.
 """
-
 
 import pandas as pd
 import numpy as np
@@ -131,13 +126,13 @@ import os
 import re
 
 import matplotlib
-matplotlib.use("Agg")   # backend sem interface gráfica (para salvar em arquivo)
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 
 # =============================================================================
-# FUNÇÕES ORIGINAIS - CADASTRO ÚNICO
+# ETAPA 1/2 — FUNÇÕES ORIGINAIS DO CADÚNICO
 # =============================================================================
 
 def add_age_and_group_columns(df_cad: pd.DataFrame):
@@ -396,7 +391,7 @@ def calculate_employment_rate_by_female_heads_with_young_children(df_cad: pd.Dat
 
 
 # =============================================================================
-# ETAPA 3: INTEGRAÇÃO DO ARQUIVO DE DIVULGAÇÃO DO ENSINO MÉDIO (IDEB)
+# ETAPA 3 — ARQUIVO IDEB (ENSINO MÉDIO)
 # =============================================================================
 
 def load_ideb_data(file_path: str = "divulgacao_ensino_medio_municipios_2025.xlsx") -> pd.DataFrame:
@@ -541,7 +536,7 @@ def top10_municipios_ideb_2025_e_evolucao_alta_floresta(df_ideb: pd.DataFrame) -
 
 
 # =============================================================================
-# ETAPA 4: VISUALIZAÇÃO GRÁFICA COM MATPLOTLIB / SEABORN
+# ETAPA 4 — VISUALIZAÇÃO GRÁFICA
 # =============================================================================
 
 FIGURAS_DIR = "figuras"
@@ -563,6 +558,8 @@ def _configurar_estilo():
 
 
 def _salvar(fig, nome_arquivo: str):
+    # Garante que a pasta exista SEMPRE, independentemente do fluxo
+    os.makedirs(FIGURAS_DIR, exist_ok=True)
     caminho = os.path.join(FIGURAS_DIR, nome_arquivo)
     fig.savefig(caminho, bbox_inches="tight")
     plt.close(fig)
@@ -589,8 +586,6 @@ def plot_media_idade_por_sexo_e_raca(stats: dict):
 
 
 def plot_mediana_idade_por_sexo_e_raca(stats: dict):
-    """ETAPA 1.1 (complementar) — Gráfico da MEDIANA de idade por
-    sexo/gênero e cor/raça."""
     mediana = stats["mediana"]
     df_plot = mediana.reset_index()
     df_plot.columns = ["SEXO", "RACA", "MEDIANA_IDADE"]
@@ -610,8 +605,6 @@ def plot_mediana_idade_por_sexo_e_raca(stats: dict):
 
 
 def plot_desvio_padrao_idade_por_sexo_e_raca(stats: dict):
-    """ETAPA 1.1 (complementar) — Gráfico do DESVIO PADRÃO de idade por
-    sexo/gênero e cor/raça."""
     desvio = stats["desvio_padrao"]
     df_plot = desvio.reset_index()
     df_plot.columns = ["SEXO", "RACA", "DESVIO_PADRAO_IDADE"]
@@ -808,7 +801,6 @@ def run_etapa4(df_cad: pd.DataFrame, df_ideb: pd.DataFrame | None = None):
 
     _configurar_estilo()
 
-    # ---- Etapa 1 ----
     print("\n[1/13] Média de idade por sexo/gênero e cor/raça...")
     stats_idade = calculate_age_distribution_by_sex_and_race(df_cad)
     plot_media_idade_por_sexo_e_raca(stats_idade)
@@ -828,7 +820,6 @@ def run_etapa4(df_cad: pd.DataFrame, df_ideb: pd.DataFrame | None = None):
     renda_escol = calculate_mean_income_by_education_level(df_cad)
     plot_renda_media_por_escolaridade(renda_escol)
 
-    # ---- Etapa 2 ----
     print("\n[6/13] Trabalho remunerado por faixa etária...")
     prop_trabalho = get_proportion_of_paid_employment_by_age_group(df_cad)
     plot_proporcao_trabalho_remunerado_por_faixa(prop_trabalho)
@@ -837,7 +828,6 @@ def run_etapa4(df_cad: pd.DataFrame, df_ideb: pd.DataFrame | None = None):
     pcd_renda = calculate_pwd_percentage_by_per_capita_income_group(df_cad)
     plot_pcd_por_faixa_renda(pcd_renda)
 
-    # ---- Perguntas complementares ----
     print("\n[8/13] Diferença de renda por sexo/gênero e cor/raça...")
     stats_renda = calculate_mean_and_median_income_difference_by_sex_and_race(df_cad)
     plot_diferenca_renda_por_sexo_e_raca(stats_renda)
@@ -854,7 +844,6 @@ def run_etapa4(df_cad: pd.DataFrame, df_ideb: pd.DataFrame | None = None):
     ocupacao_mulheres = calculate_employment_rate_by_female_heads_with_young_children(df_cad)
     plot_ocupacao_mulheres_com_e_sem_criancas(ocupacao_mulheres)
 
-    # ---- Etapa 3 (gráficos do IDEB) ----
     if df_ideb is not None and not df_ideb.empty:
         print("\n[12/13] IDEB médio 2025 por UF (rede Pública)...")
         pergunta1 = ideb_mean_by_uf_and_public_network(df_ideb)
@@ -1017,6 +1006,302 @@ def responder_pergunta_4(df_cad: pd.DataFrame) -> None:
 
 
 # =============================================================================
+# ETAPA 5 — CRUZAMENTO CADÚNICO × IDEB (PERGUNTAS 5.1 e 5.2)
+# =============================================================================
+
+def _descobrir_coluna_municipio(df_cad: pd.DataFrame) -> str | None:
+    """Descobre automaticamente a coluna de município no CadÚnico."""
+    candidatos_exatos = [
+        "CO_MUNICIPIO_FAM", "CO_MUNICIPIO_PESSOA",
+        "CO_MUNICIPIO", "COD_MUNICIPIO",
+        "CO_MUNICIPIO_DOMICILIO", "CO_MUNIC_FAM",
+    ]
+    for c in candidatos_exatos:
+        if c in df_cad.columns:
+            return c
+    for c in df_cad.columns:
+        if "MUNIC" in c.upper():
+            return c
+    for c in df_cad.columns:
+        if "IBGE" in c.upper():
+            return c
+    return None
+
+
+def _enriquecer_com_municipio(df_cad: pd.DataFrame,
+                              files: list[str]) -> pd.DataFrame:
+    """
+    Se o df_cad não tem município, tenta trazer de arquivos
+    que pareçam ser de Família/Domicílio via merge por CO_FAMILIAR_FAM.
+    """
+    col_mun = _descobrir_coluna_municipio(df_cad)
+    if col_mun is not None:
+        print(f"[INFO] Coluna de município já presente no CadÚnico: '{col_mun}'")
+        return df_cad
+
+    if "CO_FAMILIAR_FAM" not in df_cad.columns:
+        print("[AVISO] Sem 'CO_FAMILIAR_FAM' — não é possível enriquecer "
+              "com município via merge.")
+        return df_cad
+
+    print("[INFO] CadÚnico não possui coluna de município. "
+          "Tentando enriquecer a partir dos demais arquivos...")
+
+    candidatos_familia = [
+        f for f in files
+        if any(k in os.path.basename(f).lower()
+               for k in ("famil", "fam", "domicil"))
+    ]
+    # Inclui todos os arquivos, priorizando os que parecem de família
+    ordem = candidatos_familia + [f for f in files if f not in candidatos_familia]
+
+    for arq in ordem:
+        try:
+            df_aux = pd.read_csv(arq, nrows=5)
+        except Exception as e:
+            print(f"[AVISO] Não foi possível pré-ler '{arq}': {e}")
+            continue
+
+        cols_interesse = [c for c in df_aux.columns
+                          if c in ("CO_FAMILIAR_FAM",
+                                   "CO_MUNICIPIO_FAM",
+                                   "CO_MUNICIPIO",
+                                   "CO_MUNICIPIO_DOMICILIO")]
+        if "CO_FAMILIAR_FAM" not in cols_interesse:
+            continue
+        col_mun_aux = next((c for c in cols_interesse
+                            if c != "CO_FAMILIAR_FAM"), None)
+        if col_mun_aux is None:
+            continue
+
+        try:
+            df_aux = pd.read_csv(arq, usecols=["CO_FAMILIAR_FAM", col_mun_aux])
+        except Exception as e:
+            print(f"[AVISO] Falha ao ler '{arq}': {e}")
+            continue
+
+        # Evita duplicar coluna se o nome já existir (raro)
+        if col_mun_aux in df_cad.columns:
+            continue
+
+        df_cad = df_cad.merge(df_aux, on="CO_FAMILIAR_FAM", how="left")
+        print(f"[INFO] Município enriquecido a partir de '{arq}' "
+              f"(coluna '{col_mun_aux}').")
+        return df_cad
+
+    print("[ERRO] Não foi possível enriquecer o CadÚnico com município.")
+    return df_cad
+
+
+def _agregar_cadunico_por_municipio(df_cad: pd.DataFrame,
+                                    col_municipio: str | None = None) -> pd.DataFrame:
+    """Agrega o CadÚnico por município."""
+    if col_municipio is None:
+        col_municipio = _descobrir_coluna_municipio(df_cad)
+
+    if col_municipio is None or col_municipio not in df_cad.columns:
+        print("[ERRO] Nenhuma coluna de município encontrada no CadÚnico.")
+        print("       Colunas com 'MUNIC':",
+              [c for c in df_cad.columns if "MUNIC" in c.upper()])
+        print("       Colunas com 'IBGE':",
+              [c for c in df_cad.columns if "IBGE" in c.upper()])
+        print("       Colunas com 'UF':",
+              [c for c in df_cad.columns if "UF" in c.upper()])
+        return pd.DataFrame()
+
+    print(f"[INFO] Agregando CadÚnico por município usando '{col_municipio}'")
+
+    df = add_per_capita_income_column(df_cad)
+    df = add_age_and_group_columns(df)
+
+    df["CO_DEFICIENCIA_MEMB"] = pd.to_numeric(
+        df["CO_DEFICIENCIA_MEMB"], errors="coerce") == 1
+    df["VL_REMUNER_EMPREGO_MEMB"] = pd.to_numeric(
+        df["VL_REMUNER_EMPREGO_MEMB"], errors="coerce")
+    df["CO_SEXO_PESSOA"] = pd.to_numeric(df["CO_SEXO_PESSOA"], errors="coerce")
+    df["CO_PARENTESCO_RF_PESSOA"] = pd.to_numeric(
+        df["CO_PARENTESCO_RF_PESSOA"], errors="coerce")
+
+    # ---- 5.1) % PCD em extrema pobreza ----
+    df_pcd = df[df["CO_DEFICIENCIA_MEMB"]].copy()
+    df_pcd["EM_EXTREMA_POBREZA"] = df_pcd["VL_RENDA_PER_CAPITA_FAMILIA"] <= 89
+
+    grp_pcd = df_pcd.groupby(col_municipio).agg(
+        n_pcd=("CO_DEFICIENCIA_MEMB", "size"),
+        n_pcd_extrema=("EM_EXTREMA_POBREZA", "sum"))
+    grp_pcd["pct_pcd_extrema_pobreza"] = (
+        grp_pcd["n_pcd_extrema"] / grp_pcd["n_pcd"] * 100.0)
+
+    # ---- 5.2) Ocupação de mulheres responsáveis com crianças 0-6 ----
+    df["E_MULHER_RESPONSAVEL"] = (
+        (df["CO_SEXO_PESSOA"] == 2) & (df["CO_PARENTESCO_RF_PESSOA"] == 1))
+    df["E_CRIANCA_0_A_6"] = df["IDADE"].between(0, 6)
+    df["TEM_CRIANCA_0_A_6"] = df.groupby("CO_FAMILIAR_FAM")[
+        "E_CRIANCA_0_A_6"].transform("any")
+    df["TEM_TRABALHO_REMUNERADO"] = df["VL_REMUNER_EMPREGO_MEMB"] > 0
+
+    df_mulheres = df[df["E_MULHER_RESPONSAVEL"] & df["TEM_CRIANCA_0_A_6"]].copy()
+    grp_mulheres = df_mulheres.groupby(col_municipio).agg(
+        n_mulheres_com_crianca=("TEM_TRABALHO_REMUNERADO", "size"),
+        n_mulheres_ocupadas=("TEM_TRABALHO_REMUNERADO", "sum"))
+    grp_mulheres["taxa_ocupacao_mulheres_com_criancas"] = (
+        grp_mulheres["n_mulheres_ocupadas"]
+        / grp_mulheres["n_mulheres_com_crianca"] * 100.0)
+
+    # ---- Junta ----
+    resultado = grp_pcd[["n_pcd", "pct_pcd_extrema_pobreza"]].join(
+        grp_mulheres[["n_mulheres_com_crianca",
+                      "taxa_ocupacao_mulheres_com_criancas"]],
+        how="outer")
+    resultado.index.name = "CO_MUNICIPIO"
+    resultado = resultado.reset_index()
+    resultado["CO_MUNICIPIO"] = pd.to_numeric(
+        resultado["CO_MUNICIPIO"], errors="coerce")
+    return resultado
+
+
+def _preparar_ideb_por_municipio(df_ideb: pd.DataFrame) -> pd.DataFrame:
+    """Agrega o IDEB 2025 (rede Pública) por município."""
+    df_publico = df_ideb[df_ideb["REDE"].str.lower() == "pública"].copy()
+    df_publico["CO_MUNICIPIO"] = pd.to_numeric(
+        df_publico["CO_MUNICIPIO"], errors="coerce")
+    agrupado = df_publico.groupby("CO_MUNICIPIO", as_index=False).agg(
+        ideb_2025=("IDEB_2025", "mean"),
+        sg_uf=("SG_UF", "first"),
+        no_municipio=("NO_MUNICIPIO", "first"))
+    return agrupado.dropna(subset=["CO_MUNICIPIO", "ideb_2025"])
+
+
+def cruzar_cadunico_ideb(df_cad: pd.DataFrame,
+                         df_ideb: pd.DataFrame) -> pd.DataFrame:
+    """Junta os indicadores do CadÚnico com o IDEB por município."""
+    cad_mun = _agregar_cadunico_por_municipio(df_cad)
+    if cad_mun.empty:
+        return pd.DataFrame()
+    ideb_mun = _preparar_ideb_por_municipio(df_ideb)
+    if ideb_mun.empty:
+        return pd.DataFrame()
+    merged = pd.merge(cad_mun, ideb_mun, on="CO_MUNICIPIO", how="inner")
+    print(f"[INFO] Municípios cruzados CadÚnico × IDEB: {len(merged)}")
+    return merged
+
+
+def _classificar_ideb(df: pd.DataFrame,
+                      col_ideb: str = "ideb_2025") -> pd.DataFrame:
+    """Cria faixas de IDEB (Baixo / Médio / Alto) por tercis."""
+    df = df.copy()
+    try:
+        df["FAIXA_IDEB"] = pd.qcut(
+            df[col_ideb], q=3,
+            labels=["IDEB Baixo", "IDEB Médio", "IDEB Alto"],
+            duplicates="drop")
+    except ValueError:
+        df["FAIXA_IDEB"] = pd.cut(
+            df[col_ideb], bins=[0, 4.0, 5.0, 10.0],
+            labels=["IDEB Baixo", "IDEB Médio", "IDEB Alto"],
+            include_lowest=True)
+    return df
+
+
+def plot_pcd_extrema_pobreza_vs_ideb(df_merged: pd.DataFrame):
+    """Pergunta 5.1: % PCD em extrema pobreza × IDEB do município."""
+    if df_merged is None or df_merged.empty:
+        print("[AVISO] Sem dados para a Pergunta 5.1; gráfico ignorado.")
+        return
+    df = _classificar_ideb(df_merged)
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+
+    sns.boxplot(data=df, x="FAIXA_IDEB", y="pct_pcd_extrema_pobreza",
+                hue="FAIXA_IDEB", legend=False,
+                ax=axes[0], palette="RdYlGn_r")
+    axes[0].set_title("Pergunta 5.1 — % de PCDs em extrema pobreza\n"
+                      "por faixa de IDEB do município")
+    axes[0].set_xlabel("Faixa de IDEB (rede Pública, 2025)")
+    axes[0].set_ylabel("% de PCDs em extrema pobreza")
+    for i, faixa in enumerate(df["FAIXA_IDEB"].cat.categories):
+        sub = df[df["FAIXA_IDEB"] == faixa]["pct_pcd_extrema_pobreza"].dropna()
+        if len(sub):
+            axes[0].text(i, sub.median(),
+                         f"med={sub.median():.1f}%\nn={len(sub)}",
+                         ha="center", va="bottom", fontsize=9,
+                         color="black", fontweight="bold")
+
+    sns.regplot(data=df, x="ideb_2025", y="pct_pcd_extrema_pobreza",
+                ax=axes[1], scatter_kws={"alpha": 0.5, "s": 30},
+                line_kws={"color": "red"})
+    corr = df[["ideb_2025", "pct_pcd_extrema_pobreza"]].corr().iloc[0, 1]
+    axes[1].set_title(f"Correlação IDEB × % PCD em extrema pobreza\n"
+                      f"Pearson r = {corr:.3f}")
+    axes[1].set_xlabel("IDEB 2025 (rede Pública)")
+    axes[1].set_ylabel("% de PCDs em extrema pobreza")
+
+    _salvar(fig, "etapa5_01_pcd_extrema_pobreza_vs_ideb.png")
+
+
+def plot_ocupacao_mulheres_vs_ideb(df_merged: pd.DataFrame):
+    """Pergunta 5.2: Taxa de ocupação feminina × IDEB do município."""
+    if df_merged is None or df_merged.empty:
+        print("[AVISO] Sem dados para a Pergunta 5.2; gráfico ignorado.")
+        return
+    df = _classificar_ideb(df_merged)
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+
+    sns.boxplot(data=df, x="FAIXA_IDEB",
+                y="taxa_ocupacao_mulheres_com_criancas",
+                hue="FAIXA_IDEB", legend=False,
+                ax=axes[0], palette="RdYlGn")
+    axes[0].set_title("Pergunta 5.2 — Taxa de ocupação de mulheres\n"
+                      "responsáveis com crianças 0-6 anos, por faixa de IDEB")
+    axes[0].set_xlabel("Faixa de IDEB (rede Pública, 2025)")
+    axes[0].set_ylabel("Taxa de ocupação (%)")
+    for i, faixa in enumerate(df["FAIXA_IDEB"].cat.categories):
+        sub = df[df["FAIXA_IDEB"] == faixa][
+            "taxa_ocupacao_mulheres_com_criancas"].dropna()
+        if len(sub):
+            axes[0].text(i, sub.median(),
+                         f"med={sub.median():.1f}%\nn={len(sub)}",
+                         ha="center", va="bottom", fontsize=9,
+                         color="black", fontweight="bold")
+
+    sns.regplot(data=df, x="ideb_2025",
+                y="taxa_ocupacao_mulheres_com_criancas",
+                ax=axes[1], scatter_kws={"alpha": 0.5, "s": 30},
+                line_kws={"color": "red"})
+    corr = df[["ideb_2025",
+               "taxa_ocupacao_mulheres_com_criancas"]].corr().iloc[0, 1]
+    axes[1].set_title(f"Correlação IDEB × Taxa de ocupação feminina\n"
+                      f"Pearson r = {corr:.3f}")
+    axes[1].set_xlabel("IDEB 2025 (rede Pública)")
+    axes[1].set_ylabel("Taxa de ocupação (%)")
+
+    _salvar(fig, "etapa5_02_ocupacao_mulheres_vs_ideb.png")
+
+
+def run_etapa5(df_cad: pd.DataFrame, df_ideb: pd.DataFrame | None):
+    """Etapa 5 — gráficos das perguntas 5.1 e 5.2 do relatório."""
+    print("\n" + "=" * 70)
+    print("ETAPA 5: PERGUNTAS 5.1 e 5.2 — CRUZAMENTO CADÚNICO × IDEB")
+    print("=" * 70)
+    if df_ideb is None or df_ideb.empty:
+        print("[AVISO] Arquivo do IDEB não carregado; Etapa 5 ignorada.")
+        return
+    df_merged = cruzar_cadunico_ideb(df_cad, df_ideb)
+    if df_merged.empty:
+        print("[AVISO] Não foi possível cruzar CadÚnico × IDEB.")
+        return
+
+    print("\n[1/2] Plotando Pergunta 5.1 — PCD em extrema pobreza × IDEB...")
+    plot_pcd_extrema_pobreza_vs_ideb(df_merged)
+
+    print("\n[2/2] Plotando Pergunta 5.2 — Ocupação feminina × IDEB...")
+    plot_ocupacao_mulheres_vs_ideb(df_merged)
+
+    print(f"\n[FIM] Figuras da Etapa 5 salvas em '{FIGURAS_DIR}/'.")
+
+
+# =============================================================================
 # EXECUÇÃO PRINCIPAL
 # =============================================================================
 
@@ -1028,18 +1313,23 @@ def run():
         print("Os arquivos .csv não foram encontrados!")
         return
 
-    dfs = []
-    for file in files:
-        dfs.append(pd.read_csv(file))
+    dfs = [pd.read_csv(f) for f in files]
     df_cad = pd.concat(dfs, ignore_index=True)
 
-    # Respostas explícitas
+    # --- Diagnóstico: mostrar colunas carregadas ---
+    print("\n=== Colunas do CadÚnico carregado ===")
+    print(sorted(df_cad.columns.tolist()))
+
+    # --- Enriquecer com município, se necessário ---
+    df_cad = _enriquecer_com_municipio(df_cad, files)
+
+    # --- Respostas explícitas (Perguntas 1 a 4) ---
     responder_pergunta_1(df_cad)
     responder_pergunta_2(df_cad)
     responder_pergunta_3(df_cad)
     responder_pergunta_4(df_cad)
 
-    # Etapa 3 — IDEB
+    # --- Etapa 3 — IDEB ---
     print("\n" + "=" * 78)
     print("ETAPA 3: ANÁLISES DO ARQUIVO DE DIVULGAÇÃO DO ENSINO MÉDIO (IDEB)")
     print("=" * 78)
@@ -1050,8 +1340,6 @@ def run():
         pergunta1 = ideb_mean_by_uf_and_public_network(df_ideb)
         if not pergunta1.empty:
             print(pergunta1.to_string(index=False))
-        else:
-            print("Não foi possível calcular a Pergunta 1 (IDEB).")
 
         print("\n--- PERGUNTA 2 (IDEB): Top 10 municípios com maior IDEB 2025 "
               "(rede Pública) e comparação Alta Floresta vs Demais ---")
@@ -1067,11 +1355,12 @@ def run():
                         print(f"    {k}: {v:.4f}")
                     else:
                         print(f"    {k}: {v}")
-        else:
-            print("Não foi possível calcular a Pergunta 2 (IDEB).")
 
-    # Etapa 4 — gráficos (inclui agora mediana e desvio padrão)
+    # --- Etapa 4 — gráficos ---
     run_etapa4(df_cad, df_ideb)
+
+    # --- Etapa 5 — cruzamento CadÚnico × IDEB ---
+    run_etapa5(df_cad, df_ideb)
 
 
 if __name__ == '__main__':
