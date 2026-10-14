@@ -5,7 +5,8 @@
 ---
 
 ## 1. Resumo
-Este repositório contém o desenvolvimento do teste prático para a vaga de Trainee em Análise de Dados. O objetivo principal foi processar e analisar os microdados da base **Pessoa do Cadastro Único (CadÚnico) de 2018**, mapeando o perfil demográfico, as condições do mercado de trabalho, o nível de escolaridade e a vulnerabilidade social de famílias em situação de pobreza e extrema pobreza no Brasil.
+
+Este repositório apresenta os resultados do processamento e análise dos microdados da base Pessoa do Cadastro Único (CadÚnico) de 2018. O objetivo foi mapear o perfil demográfico, as condições do mercado de trabalho e o nível de vulnerabilidade social das pessoas cadastradas.
 
 ---
 
