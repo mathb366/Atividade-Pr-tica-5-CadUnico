@@ -22,8 +22,8 @@ A análise da distribuição ida petária dividor sexo/gênero e cor/raça demon
 
 ### 2.2. Mercado de Trabalho e Formalidade (PIA)
 Considerando os indivíduos em idade ativa (**PIA - 18 a 65 anos**):
-* A taxa proporcional de trabalhadores **formais** (com carteira assinada) na PIA é de **37,09%**.
-* A taxa proporcional de trabalhadores **informais** capturados na base é de **1,35%**.
+* A taxa proporcional de trabalhadores **formais** (com carteira assinada) na PIA é de **37,09%**;
+* A taxa proporcional de trabalhadores **informais** capturados na base é de **1,35%**;
 * Dentre o subconjunto da população efetivamente ocupada, **96,50%** encontram-se em postos formais e **3,50%** em condições informais.
 
 ### 2.3. Renda Média por Nível de Instrução
@@ -85,7 +85,7 @@ faixa etária (Crianças/Adolescentes: 0-17, Jovens: 18-29, Adultos:
 famílias classificadas na extrema pobreza (renda per capita familiar de
 até R$ 89,00 em 2018)?
 
-* **Proporção de PCD por Faixa Etária:** Crianças/Adolescentes (**2,19%**), Jovens (**3,53%**), Adultos (**6,38%**) e Idosos (**13,47%**).
+* **Proporção de PCD por Faixa Etária:** Crianças/Adolescentes (**2,19%**), Jovens (**3,53%**), Adultos (**6,38%**) e Idosos (**13,47%**);
 * **Vulnerabilidade na Extrema Pobreza:** **26,83%** de todas as Pessoas com Deficiência cadastradas vivem em famílias em situação de extrema pobreza (renda familiar per capita de até R$ 89,00 em 2018).
 
 ### 4. Impacto da Presença de Crianças na Ocupação das Mães/Responsáveis
@@ -94,9 +94,9 @@ responsáveis pelo domicílio que possuem crianças de 0 a 6 anos na
 família, em comparação com aquelas que não possuem crianças nessa faixa 
 etária?
 
-* **Mulheres responsáveis sem crianças de 0 a 6 anos:** 36,30% de taxa de ocupação.
-* **Mulheres responsáveis com crianças de 0 a 6 anos na família:** 37,20% de taxa de ocupação. 
-* Os dados demonstram a necessidade de inserção no mercado de trabalho independentemente dos encargos de cuidado infantil
+* **Mulheres responsáveis sem crianças de 0 a 6 anos:** 36,30% de taxa de ocupação;
+* **Mulheres responsáveis com crianças de 0 a 6 anos na família:** 37,20% de taxa de ocupação;
+* Os dados demonstram a necessidade de inserção no mercado de trabalho independentemente dos encargos de cuidado infantil.
 
 ---
 
