@@ -99,5 +99,6 @@ etária?
 ## 4. Como Executar o Código
 1. Instale o Python e as bibliotecas `pandas` e `numpy`;
 2. Adicione o arquivo CSV da amostra (`amostra.csv`) na raiz do diretório.
+
    ```bash
    python main.py
