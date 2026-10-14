@@ -107,7 +107,7 @@ política pública decorrente é focalizar o BPC e a Rede de Cuidados à Pessoa 
 Deficiência nos municípios de IDEB baixo, onde a sobreposição de vulnerabilidades
 é mais intensa.
 
-![alt text](image.png)
+![alt text](Graficos/ETAPA3_1.png)
 
 
 ### 5.2 Pergunta 2: A taxa de ocupação de mulheres responsáveis por domicílio com crianças de 0 a 6 anos é maior em municípios de IDEB alto?
@@ -117,7 +117,7 @@ feminino por meio de creches, escolas em tempo integral e mercado formal mais de
 política pública decorrente é priorizar a expansão de creches e programas de qua-
 lificação profis
 
-![alt text](image-1.png)
+![alt text](Graficos/ETAPA3_2.png)
 
 ---
 
