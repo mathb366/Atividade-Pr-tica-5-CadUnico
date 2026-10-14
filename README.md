@@ -51,7 +51,7 @@ O percentual de PCDs reportadas eleva-se proporcionalmente nas faixas de renda l
 ### 1. Desigualdade de Renda e Interseccionalidade (Renda x Gênero x Cor/Raça). 
 Qual é a diferença na média e na mediana da renda individual de 
 trabalho entre homens e mulheres quando agrupados por cor/raça (branca,
-preta, parda, amarelae indígena)?
+preta, parda, amarela e indígena)?
 
 Em todas as categorias de cor/raça, os homens superam as mulheres em média e mediana de renda individual de trabalho. 
 
@@ -64,7 +64,7 @@ Em todas as categorias de cor/raça, os homens superam as mulheres em média e m
 | **5. Indígena** | R$ 421,41 | R$ 347,99 | + R$ 73,43 | R$ 250,00 | R$ 200,00 | + R$ 50,00 |
 
 ### 2. Relação entre Nível de Escolaridade e Trabalho Informal
-Qual é a taxa percentual de trabalhadores na condiçãoo de trabalho 
+Qual é a taxa percentual de trabalhadores na condição de trabalho 
 informal em cada um dos níveis de escolaridade (sem instrução, 
 fundamental, médio e superior)?
 
