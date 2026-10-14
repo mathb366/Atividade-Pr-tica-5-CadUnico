@@ -20,7 +20,12 @@
         (aproximadamente 21 anos para homens e 23,2 anos para mulheres), com 
         mediana de 16 e 20 anos, respectivamente. A população preta apresenta 
         as maiores médias de idade, alcançando 31,7 anos para o sexo masculino 
-        e 34,8 anos para o feminino;
+        e 34,8 anos para o feminino. Sobre o desvio padrão, a população branca 
+        e a parda apresentam maior dispersão das idades entre os homens (22,1 
+        anos), enquanto, entre as mulheres, a população branca apresenta o maior 
+        valor (21,5 anos). A população indígena apresenta os menores desvios padrão, 
+        tanto para homens (17,2 anos) quanto para mulheres (16,9 anos), indicando 
+        menor variabilidade.
 
         2. Entre os indivíduos em idade ativa (PIA - 18 a 65 anos), a taxa
         proporcional de trabalhadores formais (com carteira assinada) é de 
