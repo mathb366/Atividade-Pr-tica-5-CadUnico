@@ -1,3 +1,102 @@
+""""
+=================================================================================================================================================
+    RELATÓRIO: Uma Análise Exploratória de Dados utilizando os microdados públicos da base Pessoa do Cadastro Único (CadÚnico) de 2018.
+    PROCESSO SELETIVO: Programa de Trainee da consultoria socioeconômica DataBrasil Analytics
+    Candidatos: Arthur Vieira Silva
+=================================================================================================================================================
+
+1. Introdução:
+
+    Este relatório apresenta os resultados do processamento e análise dos 
+    microdados da base Pessoa do Cadastro Único (CadÚnico) de 2018. O objetivo
+    foi mapear o perfil demográfico, as condições do mercado de trabalho e o
+    nível de vulnerabilidade social das pessoas cadastradas.
+
+2. Principais insights:
+
+    - Análise Demográfica e Mercado de Trabalho:
+        1. A análise da distribuição etária por sexo/gênero e cor/raça revela
+        que a população indígena apresenta a menor média de idade da base
+        (aproximadamente 21 anos para homens e 23,2 anos para mulheres), com 
+        mediana de 16 e 20 anos, respectivamente. A população preta apresenta 
+        as maiores médias de idade, alcançando 31,7 anos para o sexo masculino 
+        e 34,8 anos para o feminino;
+
+        2. Entre os indivíduos em idade ativa (PIA - 18 a 65 anos), a taxa
+        proporcional de trabalhadores formais (com carteira assinada) é de 
+        37,09%, enquanto a taxa de trabalhadores informais capturados na base 
+        atinge 1.35%. Considerando apenas a população efetivamente ocupada,
+        96,50% encontram-se em postos formais e 3,50% em condições informais;
+
+        3. Identificou-se uma forte correlação positiva entre o nível de
+        instrução e a renda média do trabalho individual. Indivíduos sem 
+        instrução recebem uma renda média de R$ 125,97, ao passo que aqueles 
+        com ensino superior alcançam uma média de R$ 483,80.
+
+    - Análise do Perfil de Trabalho e Escolaridade:
+        1. A proporção de cadastrados que declaram possuir trabalho remunerado
+        varia fortemente por faixa etária: é praticamente nula entre Crianças e
+        Adolescentes (0,18%), sobe para 26,98% entre os Jovens (18-29 anos),
+        atinge o pico de 48,11% entre os Adultos (30-59 anos) e recua para
+        10,87% entre os Idosos (60+ anos);
+
+        2. O percentual de Pessoas com Deficiência (PCD) reportadas cresce 
+        conforme aumenta a faixa de renda familiar per capita, variando de 
+        2,33% na faixa de até R$ 109,00 até 9,05% na faixa de renda superior a 
+        meio salário mínimo.
+    
+    - Perguntas:
+        1. Desigualdade de Renda e Interseccionalidade (Renda x Gênero x 
+        Cor/Raça). 
+        Qual é a diferença na média e na mediana da renda individual de 
+        trabalho entre homens e mulheres quando agrupados por cor/raça (branca,
+        preta, parda, amarelae indígena)?
+
+        Em todas as categorias de cor/raça, os homens apresentam médias e 
+        medianas de renda superiores às mulheres. A maior disparidade na média 
+        salarial ocorre na população branca, onde os homens ganham em média 
+        R$ 798,27 contra R$ 630,06 das mulheres (uma diferença de R$ 168,21). 
+        Sobre a mediana, a maior diferença também se concentra na população 
+        branca, com uma diferença de R$ 250,00.
+
+        2. Relação entre Nível de Escolaridade e Trabalho Informal
+        Qual é a taxa percentual de trabalhadores na condiçãoo de trabalho 
+        informal em cada um dos níveis de escolaridade (sem instrução, 
+        fundamental, médio e superior)?
+
+        A taxa de informalidade é altamente sensível ao nível de escolaridade:
+        atinge 4,55% entre os trabalhadores sem instrução e 4,31% no ensino
+        fundamental, caindo de maneira acentuada para 2,04% no ensino médio e 
+        chegando a 1,46% entre aqueles com nível superior.
+
+        3. Perfil de Vulnerabilidade e Acessibilidade de Pessoas com
+        Deficiência (PCD)
+        Qual é a proporção de Pessoas com Deficiência (PCD) registradas por 
+        faixa etária (Crianças/Adolescentes: 0-17, Jovens: 18-29, Adultos: 
+        30-59, Idosos: 60+) e qual a percentagem destas pessoas que vivem em 
+        famílias classificadas na extrema pobreza (renda per capita familiar de
+        até R$ 89,00 em 2018)?
+
+        A proporção de PCDs registradas cresce com a idade, passando de 2,19%
+        entre crianças e adolescentes para 13,47% entre os idosos. Além disso, 
+        constatou-se que 26,83% de todas as Pessoas com Deficiência cadastradas 
+        vivem em famílias classificadas em situação de extrema pobreza (renda
+        familiar per capita de até R$ 89,00).
+
+        4. Impacto da Presença de Crianças na Ocupação das Mães/Responsáveis
+        Qual é a taxa de ocupação (trabalho remunerado) entre mulheres
+        responsáveis pelo domicílio que possuem crianças de 0 a 6 anos na 
+        família, em comparação com aquelas que não possuem crianças nessa faixa 
+        etária?
+
+        A taxa de ocupação (trabalho remunerado) entre mulheres responsáveis
+        pelo domicílio que possuem crianças de 0 a 6 anos na família é de
+        37,20%, valor muito próximo ao observado entre aquelas que não possuem 
+        crianças nessa faixa etária (36,30%), demonstrando a necessidade
+        imperativa de inserção no mercado de trabalho independentemente dos 
+        encargos de cuidado infantil na base analisada.
+"""
+
 import pandas as pd
 import numpy as np
 import glob
