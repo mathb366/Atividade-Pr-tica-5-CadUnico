@@ -13,10 +13,10 @@ Este repositório apresenta os resultados do processamento e análise dos microd
 ## 2. Principais insights
 
 ### 2.1. Distribuição Demográfica por Sexo e Cor/Raça
-A análise da distribuição ida petária dividor sexo/gênero e cor/raça demonstra diferenças marcantes no perfil populacional:
+A análise da distribuição da idade por faixa etária agrupadas por sexo/gênero e cor/raça demonstra diferenças marcantes no perfil populacional:
 * **População Branca:** Apresenta médias de idade de **27,6** anos (homens) e **31,3** anos (mulheres), com medianas de **20,0** e **29,0** anos, respectivamente, e desvios padrão de **22,1** e **21,5** anos;
 * **População Preta:** Apresenta as maiores médias de idade da amostra, alcançando **31,7** anos para o sexo masculino e **34,8** anos para o feminino, com medianas de **28,0** e **34,0** anos, respectivamente, e desvios padrão de **21,0** e **19,1** anos;
-  * **População Parda:** Registra médias de idade de **27,3** anos (homens) e **31,0** anos (mulheres), com medianas de **20,0** e **29,0** anos, respectivamente, e desvios padrão de **22,1** e **20,4 anos** anos;
+* **População Parda:** Registra médias de idade de **27,3** anos (homens) e **31,0** anos (mulheres), com medianas de **20,0** e **29,0** anos, respectivamente, e desvios padrão de **22,1** e **20,4 anos** anos;
 * **População Amarela:** Apresenta médias de idade de **25,6** anos (homens) e **28,6** anos (mulheres), com medianas de **19,0** e **26,0** anos, respectivamente, e desvios padrão de **20,1** e **19,3** anos;
 * **População Indígena:** Apresenta-se como o grupo mais jovem da base, registrando média de idade de **21,1 anos** (homens) e **23,3 anos** (mulheres), com medianas de **16,0** e **20,0** anos, respectivamente, e desvios padrão de **17,2** e **16,9** anos.
 
